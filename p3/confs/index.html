@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DevOps Status Page</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+    }
+    h1 {
+      font-size: 3em;
+      margin: 0.5em;
+    }
+    .message {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 1.5em;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      max-width: 80%;
+    }
+  </style>
+</head>
+<body>
+  <h1>🚀 DevOps Deployment</h1>
+  <div class="message" id="dynamicMessage">
+    Loading message...
+  </div>
+  <script>
+    fetch("/message")
+      .then(res => res.text())
+      .then(text => {
+        document.getElementById("dynamicMessage").textContent = text;
+      })
+      .catch(() => {
+        document.getElementById("dynamicMessage").textContent = "Error loading message.";
+      });
+  </script>
+</body>
+</html>
