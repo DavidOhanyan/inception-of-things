@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: gitlab
+  template:
+    metadata:
+      labels:
+        app: gitlab
+    spec:
+      containers:
+        - name: {{ .Values.container.name }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          ports:
+            - containerPort: {{ .Values.container.port }}
+      #     volumeMounts:
+      #       - name: gitlab-html
+      #         mountPath: /usr/share/nginx/html
+      # volumes:
+      #   - name: gitlab-html
+      #     hostPath:
+      #       path: /home/azureuser/bonus/confs/web_app
+      #       type: Directory

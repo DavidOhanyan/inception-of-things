@@ -12,10 +12,10 @@ echo "setting up argocd"
 echo "applying argocd manifests"
 ./sync/apply.sh
 
-echo "forwarding on 8080"
-kubectl port-forward svc/argocd-server 8080:443 --address 0.0.0.0 -n argocd &
+echo "forwarding argocd on 8081"
+kubectl port-forward svc/argocd-server 8081:443 --address 0.0.0.0 -n argocd &
 
-echo "forwarding web"
+echo "forwarding web on 5000"
 kubectl port-forward --address 0.0.0.0 svc/app-service 5000:80 -n dev &
 
 # argocd password

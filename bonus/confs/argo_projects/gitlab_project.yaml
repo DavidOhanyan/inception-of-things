@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: gitlab
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Project containing gitlab environment services
+  sourceRepos:
+    - '*'
+  destinations:
+    - namespace: 'gitlab'
+      server: '*'
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*' 

@@ -1,0 +1,10 @@
+name: gitlab-app
+replicaCount: 1
+enviroment: 'production'
+image:
+  repository: dohanyan/devops-site
+  tag: v1
+
+container:
+  name: gitlab-nginx
+  port: 80

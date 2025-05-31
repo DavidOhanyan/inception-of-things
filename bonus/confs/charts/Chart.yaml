@@ -1,0 +1,6 @@
+apiVersion: v2
+name       : memo-api-chart-1
+description: Helm chart for memo api 
+type       : application
+version    : 0.1.0
+appVersion : "v1"
