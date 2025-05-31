@@ -7,4 +7,4 @@ image:
 
 container:
   name: gitlab-nginx
-  port: 80
+  port: 5000

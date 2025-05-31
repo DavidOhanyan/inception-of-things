@@ -1,25 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-gitlab
+  name: argo
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: gitlab
+  project: development
 
   source:
-    repoURL: http://20.117.177.179/root/argocd.git
+    repoURL: https://github.com/DavidOhanyan/inception-of-things
     targetRevision: HEAD
-    path: bonus/confs/charts
-
-    helm:
-      valueFiles:
-        - values.yaml
+    path: p3/confs/kuber_dev
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: gitlab
+    namespace: dev
 
   syncPolicy:
     automated:
