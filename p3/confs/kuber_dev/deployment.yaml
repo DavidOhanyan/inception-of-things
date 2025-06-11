@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
         - name: devops-site
-          image: dohanyan/devops-site:v1
+          image: dohanyan/devops-site:v2
           ports:
             - containerPort: 5000
